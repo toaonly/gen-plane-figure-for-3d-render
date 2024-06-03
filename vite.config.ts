@@ -1,9 +1,18 @@
-import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vitest/config';
+import { loadEnv } from 'vite'
+import { configDefaults } from './vite/config'
+import { defineConfig } from 'vitest/config'
 
-export default defineConfig({
-	plugins: [sveltekit()],
-	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
-	}
-});
+export default defineConfig(({ mode }) => {
+  Object.assign(process.env, loadEnv(mode, process.cwd(), ''))
+
+  return {
+    resolve: {
+      alias: [...configDefaults.resolve.alias],
+    },
+    plugins: [...configDefaults.plugins],
+    test: {
+      include: ['src/**/*.{test,spec}.{js,ts}'],
+      globals: true,
+    },
+  }
+})
