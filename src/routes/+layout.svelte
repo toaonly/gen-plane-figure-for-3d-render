@@ -2,4 +2,12 @@
   import '../assets/main.css'
 </script>
 
-<slot></slot>
+<div class="page">
+  <div class="container">
+    <article class="prose prose-slate">
+      <div class="text-3xl">Plane Figure</div>
+
+      <slot></slot>
+    </article>
+  </div>
+</div>
