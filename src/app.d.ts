@@ -18,6 +18,9 @@ export type Figure = {
   width?: number
   height?: number
   depth?: number
+  x?: number
+  y?: number
+  z?: number
   created_at: string
   updated_at: string
 }
